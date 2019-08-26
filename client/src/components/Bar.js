@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { FaPlay, FaForward, FaBackward } from "react-icons/fa";
+import { FaPlay, FaForward, FaBackward, FaPause } from "react-icons/fa";
 
 const Container = styled.main`
   height: 100vh;
@@ -14,16 +14,30 @@ const MusicBar = styled.div`
   background: #fff;
   box-shadow: 5px 11px 0 rgba(0, 0, 0, 0.5);
   width: 210px;
-  padding: 20px 10px;
+  padding: 10px;
 `;
 
 const Popup = styled.div`
   display: none;
 `;
 
-const ControlsContainer = styled.div``;
+const ControlsContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
 
 const Controls = styled.div``;
+
+const Button = styled.button`
+  display: inline-block;
+  margin: 0 8px;
+  border: 0;
+  font-size: 16px;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
 
 const Disc = styled.div`
   background: #000;
@@ -33,6 +47,12 @@ const Disc = styled.div`
 `;
 
 const Bar = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handleClick = e => {
+    e.preventDefault();
+    setIsPlaying(!isPlaying);
+  };
   return (
     <Container>
       <MusicBar>
@@ -40,9 +60,15 @@ const Bar = () => {
         <ControlsContainer>
           <Disc></Disc>
           <Controls>
-            <FaBackward />
-            <FaPlay />
-            <FaForward />
+            <Button>
+              <FaBackward />
+            </Button>
+            <Button onClick={handleClick}>
+              {isPlaying === true ? <FaPause /> : <FaPlay />}
+            </Button>
+            <Button>
+              <FaForward />
+            </Button>
           </Controls>
         </ControlsContainer>
       </MusicBar>
