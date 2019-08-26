@@ -5,20 +5,16 @@ import "./App.css";
 
 function App() {
   const GlobalStyle = createGlobalStyle`
-    main {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    body {
+        background-color: #fff2f6;
     }
+
   `;
 
   return (
     <>
       <GlobalStyle />
-      <main>
-        <Bar />
-      </main>
+      <Bar />
     </>
   );
 }

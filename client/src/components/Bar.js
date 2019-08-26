@@ -1,5 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import { FaPlay, FaForward, FaBackward } from "react-icons/fa";
+
+const Container = styled.main`
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const MusicBar = styled.div`
   max-width: 100%;
@@ -26,13 +34,19 @@ const Disc = styled.div`
 
 const Bar = () => {
   return (
-    <MusicBar>
-      <Popup />
-      <ControlsContainer>
-        <Disc></Disc>
-        <Controls></Controls>
-      </ControlsContainer>
-    </MusicBar>
+    <Container>
+      <MusicBar>
+        <Popup />
+        <ControlsContainer>
+          <Disc></Disc>
+          <Controls>
+            <FaBackward />
+            <FaPlay />
+            <FaForward />
+          </Controls>
+        </ControlsContainer>
+      </MusicBar>
+    </Container>
   );
 };
 
